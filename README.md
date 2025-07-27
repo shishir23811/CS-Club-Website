@@ -22,7 +22,7 @@ Click on the **Fork** button at the top right of this page. This creates a perso
 ### 2. Clone Your Fork
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/CS-Club-Website.git
+git clone https://github.com/CSClub-IIITDM/CS-Club-Website.git
 cd CS-Club-Website
 ```
 
