@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/* Brand colors (from club logo) */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --cs-blue: #0047AB;   /* Primary Blue */
+  --cs-cyan: #00AEEF;   /* Secondary Cyan */
+  --cs-yellow: #FFF200; /* Accent Yellow */
+  --cs-green: #16a34a;  /* Green accent */
+  --card-bg-light: #eef2f7; /* darker than off-white for contrast */
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card-bg-dark: #111317; /* slightly lighter than powder-black */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cs-blue: var(--cs-blue);
+  --color-cs-cyan: var(--cs-cyan);
+  --color-cs-yellow: var(--cs-yellow);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Utility helpers */
+.brand-gradient {
+  background-image: linear-gradient(120deg, rgba(255,255,255,0.9) 90%, rgba(16,185,129,0.1) 100%);
+}
+
+.ring-brand-hover:hover { /* blue hover */
+  --tw-ring-color: var(--cs-blue);
+}
+
+.ring-brand-yellow-hover:hover { /* yellow hover */
+  --tw-ring-color: var(--cs-yellow);
+}
+
+/* Button primitives using club colors */
+.btn {
+  @apply inline-flex items-center justify-center font-semibold transition-colors transition-transform rounded-lg px-5 py-2 shadow-sm;
+}
+
+.btn-primary {
+  background-color: var(--cs-cyan);
+  color: white;
+  @apply shadow-md;
+}
+.btn-primary:hover { opacity: 0.95; @apply shadow-lg -translate-y-px; }
+
+.btn-outline-blue {
+  border: 1px solid var(--cs-blue);
+  color: var(--cs-blue);
+  background: transparent;
+}
+.btn-outline-blue:hover {
+  background: var(--cs-blue);
+  color: white;
+  @apply shadow-md;
+}
+
+.btn-outline-cyan {
+  border: 1px solid var(--cs-cyan);
+  color: var(--cs-cyan);
+  background: transparent;
+}
+.btn-outline-cyan:hover {
+  background: var(--cs-cyan);
+  color: white;
+  @apply shadow-md;
+}
+
+/* Yellow filled button */
+.btn-yellow {
+  background-color: var(--cs-yellow);
+  color: var(--cs-blue);
+  @apply shadow-md;
+}
+.btn-yellow:hover { @apply shadow-lg -translate-y-px; filter: brightness(0.97); }
+
+/* Card surface that adapts to light/dark sections */
+.card-surface {
+  background-color: var(--card-bg-light);
+}
+.dark .card-surface {
+  background-color: var(--card-bg-dark);
+}
+
+/* Animated gradient text for hero heading */
+.animated-gradient-text {
+  background-image: linear-gradient(90deg, var(--cs-blue), var(--cs-cyan), var(--cs-yellow), var(--cs-cyan), var(--cs-blue));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-move 6s linear infinite;
+}
+
+@keyframes gradient-move {
+  0% { background-position: 0% 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* Section background pairs: light (white/off-white), dark (black/powder-black) */
+.bg-section-1 { /* white / pure black */
+  background-color: #ffffff;
+}
+
+/* Social round buttons in hero */
+.hero-social {
+  @apply rounded-full backdrop-blur bg-white/5 dark:bg-black/5 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white/60 transition-colors;
+}
+.hero-social:hover {
+  color: #ffd700; /* gold */
+}
+.dark .bg-section-1 {
+  background-color: #000000;
+}
+.bg-section-2 { /* off-white / powder-black */
+  background-color: #f8fafc; /* slate-50-ish */
+}
+.dark .bg-section-2 {
+  background-color: #0d1117; /* github-dark-like powder black */
+}
+
+/* Subtitle emphasis */
+.subtitle-impact {
+  font-weight: 700;
+  color: #ffd700; /* gold */
+}
